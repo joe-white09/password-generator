@@ -1,4 +1,9 @@
-// Assignment code here
+// character arrays
+var lowerCaseArray = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+var upperCaseArray = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+var numericArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+var specialCharactersArray = ['!', '@', '#', '$', '%', '&', '*', '?', '"', "'", '(', ')', '+', ',', '-', '.', '/', ':', ';', '<', '>', '=', '[', ']',  '^', '_', '`', '{', '}', '~'];
+
 
 var generatePassword = function()
 {
@@ -8,63 +13,53 @@ var generatePassword = function()
      window.alert("You must enter a valid number.")
      return generatePassword();
    }
-  //  promptLength = parseInt(promptLength);
+
   if (promptLength <8) {
     window.alert("You must enter at least 8.");
     return generatePassword();    
   }
+
   if (promptLength >128) {
     window.alert("You can only select up to 128 characters.");
     return generatePassword();   
   };
 
+  //Array for accepted characters
   var passwordElements = [];
+
+  // confirm windows to accept or decline characters included
   var lowerCase = window.confirm("Would you like to include Lowercase characters?");
-  var lowerCaseArray = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
   if (lowerCase===true) {
      passwordElements= passwordElements.concat(lowerCaseArray)
   };
 
   var upperCase = window.confirm("Would you like to include Uppercase characters?");
-  var upperCaseArray = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
   if (upperCase===true) {
     passwordElements=passwordElements.concat(upperCaseArray);
   };
-
+ 
   var numeric = window.confirm("Would you like to include Numbers?");
-  var numericArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
   if (numeric===true) {
     passwordElements=passwordElements.concat(numericArray);
   };
  
-  var specialCharacters = window.confirm("Would you like to include Special characters?");
-  var specialCharactersArray = ['!', '@', '#', '$', '%', '&', '*', '?', '"', "'", '(', ')', '+', ',', '-', '.', '/', ':', ';', '<', '>', '=', '[', ']',  '^', '_', '`', '{', '}', '~'];
+  var specialCharacters = window.confirm("Would you like to include Special characters?"); 
   if (specialCharacters===true) {
     passwordElements=passwordElements.concat(specialCharactersArray);
   };
 
+  // generates password based upon approved characters
 let password="";
 if (passwordElements.length === 0) return "";
 
-for (let i = 0; i < promptLength; i++) 
- { 
-    var randomIndex = Math.floor(Math.random() * passwordElements.length);
-    password += passwordElements[randomIndex];
-    
-    
-    // console.log (password);
+for (let i = 0; i < promptLength; i++) { 
+    var passwordIndex = Math.floor(Math.random() * passwordElements.length);
+    password += passwordElements[passwordIndex];
   }
 
-  // console.log(passwordElements);
 return password;
-  
-
 
 };
-
-
-
-
 
 
 // Get references to the #generate element
