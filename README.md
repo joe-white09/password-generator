@@ -9,7 +9,7 @@ Creates a randomly generated password based upon the user's input
 * JavaScript
 
 ## Website
-
+https://joe-white09.github.io/password-generator/
 
 ## Contribution
 Starter code of HTML, CSS, and some JavaScript by Vanderbilt Coding Bootcamp,
